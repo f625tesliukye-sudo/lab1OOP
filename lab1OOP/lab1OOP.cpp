@@ -61,13 +61,20 @@ int main() {
     cout << "2:" << endl;
     for (x = -1; x <= 1; x += 0.2) {
 
+        if (fabs(x) < 1e-9) {
+            x = 0;
+        }
+
         b objectB(x, y, z);
         double valueB = objectB.calculate();
 
         a objectA(x, y, z, valueB);
         double valueA = objectA.calculate();
 
-        cout << setw(7) << "b = " << valueB << setw(10) << "a = " << valueA << endl;
+        cout << fixed << setprecision(4);
+        cout << "x = " << setw(6) << x
+            << "   b = " << setw(10) << valueB
+            << "   a = " << setw(10) << valueA << endl;
 
     }
 
